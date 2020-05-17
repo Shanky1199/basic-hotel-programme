@@ -2,12 +2,13 @@
 
  //CODING BY SHASHANK S CLASS 12TH A
 
-#include<iostream.h>
-#include<fstream.h>
+#include<iostream>
+#include<fstream>
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include<conio.h>
+//#include<conio.h>
+using namespace std;
 class hotel
 {
 	int room_no;
@@ -31,7 +32,6 @@ void hotel::main_menu()
 	int choice;
 	while(choice!=5)
 	{
-		clrscr();
 		cout<<"\n\t\t\t\t*************";
 		cout<<"\n\t\t\t\t* MAIN MENU *";
 		cout<<"\n\t\t\t\t*************";
@@ -57,16 +57,17 @@ void hotel::main_menu()
 			default:
 				{
 					cout<<"\n\n\t\t\tWrong choice.....!!!";
-					cout<<"\n\t\t\tPress S key to continue....!!";
-					getch();
+					cout<<"\n\t\t\tPress enter to continue....!!";
+					getchar();
 				}
 		}
+		system("cls");
 	}
 }
 
 void hotel::add()
 {
-	clrscr();
+	
 	int r,flag;
 	ofstream fout("Record.dat",ios::app);
 
@@ -93,13 +94,13 @@ void hotel::add()
 	}
 
 	cout<<"\n Press S key to continue.....!!";
-	getch();
+	getchar();
 	fout.close();
 }
 
 void hotel::display()
 {
-	clrscr();
+	
 	ifstream fin("Record.dat",ios::in);
 	int r,flag;
 	cout<<"\n Enter room no: ";
@@ -110,7 +111,7 @@ void hotel::display()
 		fin.read((char*)this,sizeof(hotel));
 		if(room_no==r)
 		{
-			clrscr();
+			//clrscr();
 			cout<<"\n Cusromer Details";
 			cout<<"\n ----------------";
 			cout<<"\n\n Room no: "<<room_no;
@@ -126,7 +127,7 @@ void hotel::display()
 		cout<<"\n Sorry Room no. not found or vacant....!!";
 
 	cout<<"\n\n Press S key to continue....!!";
-	getch();
+	
 	fin.close();
 
 }
@@ -134,7 +135,7 @@ void hotel::display()
 
 void hotel::rooms()
 {
-	clrscr();
+
 	ifstream fin("Record.dat",ios::in);
 	cout<<"\n\t\t\t    List Of Rooms Allotted";
 	cout<<"\n\t\t\t    ----------------------";
@@ -146,14 +147,15 @@ void hotel::rooms()
 		cout<<"\n\n "<<room_no<<"\t\t"<<name;
 		cout<<"\t\t"<<address<<"\t\t"<<phone;
 	}
-	cout<<"\n\n\n\t\t\tPress S key to continue.....!!";
-	getch();
+	cout<<"\n\n\t";
+	system("pause");
 	fin.close();
+	system("cls");
 }
 
 void hotel::edit()
 {
-	clrscr();
+	
 	int choice,r;
 
 	cout<<"\n EDIT MENU";
@@ -163,7 +165,7 @@ void hotel::edit()
 
 	cout<<"\n Enter your choice: ";
 	cin>>choice;
-	clrscr();
+	//clrscr();
 	cout<<"\n Enter room no: " ;
 	cin>>r;
 
@@ -176,7 +178,7 @@ void hotel::edit()
 		default: cout<<"\n Wrong Choice.....!!";
 	}
 	cout<<"\n Press S key to continue....!!!";
-	getch();
+	getchar();
 }
 
 
@@ -268,27 +270,30 @@ void hotel::delete_rec(int r)
 }
 
 
-void main()
+int main()
 {
 	hotel h;
 
 
-	clrscr();
+	// clrscr();
+	
 	cout<<"\n\t\t\t***************************************************";
-	cout<<"\n\t\t\t* HOTEL MANAGEMENT PROJECT DONE BY shashank.s*";
+	cout<<"\n\t\t\t*             HOTEL MANAGEMENT PROJECT ";
 	cout<<"\n\t\t\t***************************************************";
 
 
-	cout<<"\n\n\n\n\t\tMade By:";
+	cout<<"\n\n\n\n\tMade By:";
 
-	cout<<"\nshashank;
+	cout<<"\n\t\tshashank\n\n\t\tPranil\n\n";
 
 
-
+       cout<<"\t\t\t\t\t";
 	
 	
-	cout<<"\n\n\n\n\n\n\n\t\t\t\t\tPress S key to continue....!!";
-	getch();
+	system("pause");
+	system("cls");
 	h.main_menu();
+	
+	return 0;
 }
 
