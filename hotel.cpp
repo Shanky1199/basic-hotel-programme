@@ -7,8 +7,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<time.h>
+#include<windows.h>
 //#include<conio.h>
 using namespace std;
+COORD coord = {0, 0};
 class hotel
 {
 	int room_no;
@@ -26,6 +29,41 @@ class hotel
 	void modify(int);		//to modify the record
 	void delete_rec(int);		//to delete the record
 };
+void gotoxy (int x, int y)	
+{
+    coord.X = x;
+    coord.Y = y; 
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+void welcome_dance()	
+{
+	system("color FC");
+	int j,i,x,y;
+	for(i=0;i<27;i++)
+	{
+		gotoxy(i,13);
+		cout<<" ";
+		cout<<"CONTINENTAL HOTEL";
+		Sleep(40);
+	}
+	for(j=67;j>44;j--)
+	{
+		gotoxy(j,13);
+		cout<<" WELCOME YOU";cout<<"            ";
+		Sleep(40);
+	}
+	gotoxy(27,13);cout<<"CONTINENTAL HOTEL";
+	gotoxy(45,13);cout<<" WELCOMES YOU";
+	for(int j=78;j>=0;j--)
+	{
+		gotoxy(j,20);cout<<"#";
+		gotoxy(j,4);cout<<"V";
+		Sleep(30);
+	}
+	gotoxy(56,23);cout<<"SHASHANK S    4SF15IS069";
+	gotoxy(56,24);cout<<"PRANIL        4SF15IS055";
+	Sleep(2000);
+}
 
 void hotel::main_menu()
 {
@@ -123,12 +161,19 @@ void hotel::display()
 		}
 	}
 
-	if(flag==0)
+	if(flag==1)
+	{
+	
 		cout<<"\n Sorry Room no. not found or vacant....!!";
+		
+	
+}
+     	
 
-	cout<<"\n\n Press S key to continue....!!";
+	//<<"\n\n Press S key to continue....!!";
 	
 	fin.close();
+	system("pause");
 
 }
 
@@ -273,7 +318,8 @@ void hotel::delete_rec(int r)
 int main()
 {
 	hotel h;
-
+    welcome_dance();
+    system("cls");
 
 	// clrscr();
 	
